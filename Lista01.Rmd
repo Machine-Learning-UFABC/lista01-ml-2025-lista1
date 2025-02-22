@@ -27,13 +27,50 @@ a) Problema de classificação.
 b) Problema de regressão.
 
 c) Problema de Agrupamento.
-```{latex}
+## Solução Exercício 01
 
-```
+# Problema de classificação
+
+- busca classificar dados
+- não retorna uma caracteristica desconhecida
+- kNN
+---
+O problema da classificação são situações em que o objetivo é classificar os dados em diferentes categorias. No caso do aprendizado de máquina, se utiliza dados rotulados afim de, para cada dado que futuramente seja inserido, o sistema seja capaz de diferenciar nas categorias treinadas.
+
+Por exemplo, para determinar se uma maçã é boa ou está podre, podemos utilizar imagens de maçãs comestiveís e de maçãs aprodrecendo, e assim criar um sistema capaz de separar maçãs com base em fotos tiradas por uma câmera. Entretanto, caso utilizamos o mesmo sistema, sem nenhuma alteração, para separar pera, o sistema não sabera diferenciar quais peras são saudáveis e quais estão podres.
+
+Uma técnica comum é utilizar o kNN..
+# Problema de regressão
+
+- Prever valores
+- Pode retornar o que não conhece
+
+# Problema de agrupamento
+
+- Busca agrupar os dados por meios não supervisionados
+- K-means
+- Clustering
+- Parametros/Estabilidade
+- Density
+
 
 ## Exercício 02
 
 Descreva com suas próprias palavras o que é a "maldição da dimensionalidade".
+
+## Solução Exercício 02
+- Dados organizados apenas em altas dimensões, ficam desordenados em baixa dimensão
+- Quando aumenta a dimensão, aumenta o volume nos quais os dados podem ficar;
+- As estratégias de organização ficam ineficientes;
+- O poder de previsão aumenta até uma certa quantidade de dimensões, mas conforme for aumentando fica dificil prever.
+- https://pt.wikipedia.org/wiki/Maldi%C3%A7%C3%A3o_da_dimensionalidade
+----
+A maldição da dimensionalidade é um problema existente em diversas areas que lidam com dados, dentre elas o aprendizado de máquina.
+
+Para organizar dados, são necessários "dimensões" para separá-los, por exemplo: se queremos determinar se alguém está acima do peso ou não, meramente utilizar o quanto alguém pesa é insuficiente para classificar, e para corrigir isso podemos utilizar o tamanho da pessoa e a idade como parâmetro, aumentado a "dimensão" do nosso sistema, e assim conseguindo resultados mais precisos. Isso ocorre pois o "volume" nos quais os dados podem estar confinados aumenta, e assim ficam mais dispersos do que caso representassemos numa única dimensão.
+
+O problema é que, conforme a dimensão aumenta, fica mais difícil estabelecer estratégias para organiza-los e, por mais que aumentar os parâmetros ajude a prever, utilizar muitas dimensões também começa a ter o efeito oposto, já que os dados começam a ficar dispersos demais afim de separá-los apropriadamente.
+
 
 ## Exercício 03
 
@@ -134,9 +171,35 @@ A função `sum` pode também ser útil. Lembre-se de usar o comando `?` para aj
 
 ## Solução Exercício 04
 ```{r}
+## copiando do enunciado
 library(tidyverse)
+library(magrittr)
+
+data("iris") # Carrega o banco no ambiente global
+iris <- as_tibble(iris) %>%  # Converte para a dataframe tibble
+  select(Petal.Length,Sepal.Length,Species) %>% # Seleciona colunas da dataframe
+  rename( x_1 = Petal.Length, x_2 = Sepal.Length, y = Species) # Renomeia as colunas
+
+head(iris)
+
+## copiando do exercicio anterior
+
+calculaTudo <- function(k,x,D){
+  D2 <- D %>%
+    mutate( dist = (x[1] - x_1)^2 + (x[2] - x_2)^2 ) %>%
+    arrange( dist ) %>% head(k) %>% count(y)
+  p=D #temp
+  return(D2)
+}
 
 
+x_1 = rnorm(100,1,1)
+x_2 = rnorm(100,-1,2)
+x <- c(x_1, x_2)
+##
+
+print(calculaTudo(10,x,iris))
+print(calculaTudo(1,x,iris))
 ```
 
 ## Exercício 5 (opcional)
