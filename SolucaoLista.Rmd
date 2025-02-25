@@ -71,11 +71,10 @@ Data <- tibble( x_1 = rnorm(100,1,1),
              y   = factor(sample(c("one","two","three"),100,replace = T)))
 head(D)
 print(calculaTudo(10,x,Data))
-``
+```
 ## Exercício 04
 
 ```{r}
-## copiando do enunciado
 library(tidyverse)
 library(magrittr)
 
@@ -85,8 +84,6 @@ iris <- as_tibble(iris) %>%  # Converte para a dataframe tibble
   rename( x_1 = Petal.Length, x_2 = Sepal.Length, y = Species) # Renomeia as colunas
 
 head(iris)
-
-## copiando do exercicio anterior
 
 calculaTudo <- function(k,x,D){
   D2 <- D %>%
