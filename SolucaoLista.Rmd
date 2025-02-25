@@ -28,6 +28,7 @@ O problema da classificação são situações em que o objetivo é classificar 
 Por exemplo, para determinar se uma maçã é boa ou está podre, podemos utilizar imagens de maçãs comestiveís e de maçãs aprodrecendo, e assim criar um sistema capaz de separar maçãs com base em fotos tiradas por uma câmera. Entretanto, caso utilizamos o mesmo sistema, sem nenhuma alteração, para separar pera, o sistema não sabera diferenciar quais peras são saudáveis e quais estão podres.
 
 Uma técnica comum é utilizar o kNN, que analisa os "k" vizinhos mais próximos para separar os dados. Caso o "k" seja muito baixo, o sistema "memoriza" os dados, e conforme o "k" aumenta, ele vai se tornando menos flexivel, se alinhando mais ao comportamento dos dados.
+
 # Problema de regressão
 
 O modelo de regressão é utilizado para prever comportamentos de dados, sendo muito utilizado, por exemplo, na bolsa de valores, onde é muito difícil prever se uma ação irá subir ou descer dada a natureza caótica dos dados.
@@ -35,6 +36,7 @@ O modelo de regressão é utilizado para prever comportamentos de dados, sendo m
 Diferente do problema de classificação, o modelo de regressão é capaz de retormar um resultado válido para dados nunca antes visto, por exemplo, se uma ação tenha um aumento ou uma redução subita, o mesmo modelo pode continuar retornando previsões validas, sem a necessidade de criar um novo sistema novamente.
 
 Assim como no problema de classificação, a partir de técnicas como kNN é possível determinar o comportamento médio dos dados através de seus vizinhos, para assim prever o comportamento de futuros dados.
+
 # Problema de agrupamento
 
 O problema de agrupamento de dados consiste em, dado uma enorme quantidade de informações, "separar em categórias distintas" (clustering) ao analisar comportamentos semelhantes. Esse problema não é supervisionado, visto que é o próprio computador que irá definir as categorias, e não um rotulo previamente estabelecido.
